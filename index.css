@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.204);
+    border-radius: 15px;
+    padding: 50px;
+    border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+}
