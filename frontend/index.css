@@ -24,11 +24,11 @@ form input {
     outline: none;
     border: none;
     border-bottom: 1px solid black;
-    
+
 }
 
 form div {
-    width: min(100%,400px);
+    width: min(100%, 400px);
     padding: 10px;
 }
 
@@ -36,7 +36,8 @@ header h1 {
     text-align: center;
 }
 
-header, form {
+header,
+form {
     border: 1px solid black;
     padding: 20px;
     width: 300px;
@@ -47,14 +48,14 @@ header, form {
 
 header {
     border-radius: 15px;
-    border-bottom-left-radius: 0 ;
-    border-bottom-right-radius:0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-#submit{
+#submit {
     width: 100%;
     background-color: black;
-    color: white;   
+    color: white;
     padding: 10px;
 }
 
@@ -63,7 +64,7 @@ button:hover {
 }
 
 #submit:hover {
-    background-color: rgb(28, 187, 92);
+    background-color: rgb(144, 139, 206);
     color: black;
     transition: all .2s;
 }
