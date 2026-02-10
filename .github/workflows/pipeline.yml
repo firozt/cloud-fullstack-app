@@ -20,5 +20,4 @@ jobs:
         aws-region: eu-west-2
 
     - name: Upload site to S3
-      run: aws s3 sync frontend/ s3://mthree-peregrine-s3-3/ --delete \
-       --cache-control "no-cache"
+      run: aws s3 sync frontend/ s3://mthree-peregrine-s3-3/ --delete
