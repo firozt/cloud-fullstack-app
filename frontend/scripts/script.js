@@ -2,7 +2,6 @@ document.getElementsByTagName("form")[0].addEventListener("submit", (e) => {
     e.preventDefault();
     const form = e.target;
 
-    // get data
     const formData = {
         name: form.name.value,
         email: form.email.value,
