@@ -9,15 +9,27 @@
 </head>
 
 <body>
-    <h1>Form</h1>
+    <header>
+        <h1>Form</h1>
+    </header>
     <form>
-        <p>Name</p>
-        <input type="text" id="name" />
-        <p>Email</p>
-        <input type="email" id="email" />
-        <p>Phone Number</p>
-        <input type="tel" id="phone-number" />
-        <button type="submit">submit</button>
+        <div>
+            <p>Full Name</p>
+            <input placeholder="John Doe" type="text" id="name" />
+        </div>
+        <div>
+            <p>Email</p>
+            <input placeholder="email@mail.com" type="email" id="email" />
+        </div>
+        <div>
+            <p>Phone Number</p>
+            <input placeholder="+44 7--- -----" type="tel" id="phone-number"/>
+        </div>
+        <div>
+            <p>Postcode</p>
+            <input type="tel" id="phone-number"/>
+        </div>
+        <button type="submit" id="submit">Submit</button>
     </form>
     <script src="/script.js"></script>
 </body>
