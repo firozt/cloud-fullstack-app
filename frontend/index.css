@@ -12,7 +12,7 @@ body {
     background-color: rgb(104, 104, 239);
 }
 
-#form-page-container {
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,8 @@ body {
     flex-direction: column;
 }
 
-#form-page-container>div{
+.container{
+    width: fit-content;
     display: flex;
     flex-direction: row;
     height: fit-content;
@@ -93,4 +94,28 @@ button:hover {
     height: 400px;
     margin: auto;
     position: relative;
+}
+
+.submitted-screen {
+    border-radius: 5px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.submitted-screen th {
+    background-color: rgb(220, 220, 220);
+}
+
+.submitted-screen th, .submitted-screen td {
+    width: min-content;
+    padding: 4px;
+}
+
+.submitted-screen p {
+    position: relative;
+    bottom: 8px;
+    color: gray;
 }
