@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="center">
-        <div class="container submitted-screen">
+        <div class="container submitted-screen" id="output">
             <h2>All Data Submitted Successfully!</h2>
             <p>Below is the data that has been saved</p>
-            <table>
-                <thead>
-                    <th>Form Field</th>
-                    <th>Value Given</th>
-                    
-                </thead>
-                <tr>
-                    <th>Full Name</th>
-                    <td data-field="fullname"></td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td data-field="email"></td>
-
-                </tr>
-                <tr>
-                    <th>Phone Number</th>
-                    <td data-field="phonenumber"></td>
-                </tr>
-                <tr>
-                    <th>DOB</th>
-                    <td data-field="dob"></td>
-                </tr>
-            </table>
         </div>
     </div>
-    <script src="scripts/submitted.js"></script>
 </body>
+<script>
+    const data = JSON.parse(sessionStorage.getItem("formData"));
+    const outputDiv = document.getElementById("output");
+    if (data) {
+        outputDiv.innerHTML += `
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Form Field</th>
+                            <th>Value Given</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>Full Name</th><td>${data.name}</td></tr>
+                            <tr><th>Email</th><td>${data.email}</td></tr>
+                            <tr><th>Phone Number</th><td>${data.phone_number}</td></tr>
+                            <tr><th>DOB</th><td>${data.dob}</td></tr>
+                        </tbody>
+                    </table>
+                    `;
+    } else {
+        outputDiv.innerHTML += "<p>No form data found.</p>";
+    }
+</script>
 
 </html>
