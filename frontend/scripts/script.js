@@ -15,3 +15,4 @@ document.getElementsByTagName("form")[0].addEventListener("submit", async (e) =>
     // redirect with form data as query params
     window.location.href = "submitted.html?" + params;
 });
+
