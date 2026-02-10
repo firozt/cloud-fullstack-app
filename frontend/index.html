@@ -9,28 +9,33 @@
 </head>
 
 <body>
-    <header>
-        <h1>Form</h1>
-    </header>
-    <form>
+    <div id="form-page-container">
+        <!-- <h1>Form</h1> -->
         <div>
-            <p>Full Name</p>
-            <input placeholder="John Doe" type="text" id="name" />
+            <header>
+                <img src="./testimg.jpg"/>
+            </header>
+            <form>
+                <div>
+                    <p>Full Name</p>
+                    <input placeholder="John Doe" name="fullname" type="text" id="name" />
+                </div>
+                <div>
+                    <p>Email</p>
+                    <input placeholder="email@mail.com" name="email" type="email" id="email" />
+                </div>
+                <div>
+                    <p>Phone Number</p>
+                    <input placeholder="+44 7--- -----" name="phonenumber" type="tel" id="phone-number"/>
+                </div>
+                <div>
+                    <p>Date Of Birth</p>
+                    <input placeholder="dd/mm/yy" name="dob" type="date" id="dob"/>
+                </div>
+                <button type="submit" id="submit">Submit</button>
+            </form>
         </div>
-        <div>
-            <p>Email</p>
-            <input placeholder="email@mail.com" type="email" id="email" />
-        </div>
-        <div>
-            <p>Phone Number</p>
-            <input placeholder="+44 7--- -----" type="tel" id="phone-number"/>
-        </div>
-        <div>
-            <p>Postcode</p>
-            <input type="tel" id="phone-number"/>
-        </div>
-        <button type="submit" id="submit">Submit</button>
-    </form>
+    </div>
     <script src="/script.js"></script>
 </body>
 
