@@ -30,3 +30,13 @@ Tells docker how to build this project into a docker image
 
 
 
+# Running Locally
+
+To run locally we build the Docker image (from root dir)
+`docker build -t static-files .`
+
+Then we can run the docker image built by running
+`docker run -p 8080:80 --name webserver static-files`
+
+The running docker process is now hosting the files under the url
+`http://localhost:8080`
