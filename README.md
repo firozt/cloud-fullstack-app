@@ -24,3 +24,9 @@ Shows a confirmation of the data the user has given into the form, showing each 
 
 ### script.js
 Handles the saving of user input via the use of Javascript's sessions storage, storaing each field
+
+### Dockerfile
+Tells docker how to build this project into a docker image
+
+
+
