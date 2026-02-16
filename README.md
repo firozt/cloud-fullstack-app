@@ -34,11 +34,11 @@ Tells docker how to build this project into a docker image
 
 # Running Locally
 
-To run locally we build the Docker image (from root dir)
+To run locally we build the Docker image (from root dir) <br>
 `docker build -t static-files .`
 
-Then we can run the docker image built by running
+Then we can run the docker image built by running <br>
 `docker run -p 8080:80 --name webserver static-files`
 
-The running docker process is now hosting the files under the url
+The running docker process is now hosting the files under the url <br>
 `http://localhost:8080`
