@@ -11,6 +11,8 @@
 │
 ├── /img                  # Static image assets
 │   └── testimg.jpg
+├── Dockerfile            # Dockerfile for image building
+
 ```
 
 ### pipeline.yml
