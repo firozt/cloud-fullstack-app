@@ -2,6 +2,8 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
   e.preventDefault();
   const form = e.target;
 
+  let x
+
   const formData = {
     name: form.name.value,
     email: form.email.value,
