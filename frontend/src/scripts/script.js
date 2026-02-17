@@ -3,9 +3,6 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
   const form = e.target;
 
   const formData = {
-
-
-
     name: form.name.value,
     email: form.email.value,
     phone_number: form['phonenumber'].value,
