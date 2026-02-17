@@ -4,6 +4,7 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
 
   let x
 
+
   const formData = {
     name: form.name.value,
     email: form.email.value,
