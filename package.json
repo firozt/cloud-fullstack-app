@@ -16,7 +16,8 @@
     "lint:js": "eslint \"**/*.js\"",
     "lint:css": "stylelint \"**/*.css\"",
     "format": "prettier --write \"**/*.{js,html,css}\"",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint": "npm run lint:js && npm run lint:css",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
