@@ -1,7 +1,7 @@
 services:
   # service for hosting html,css,js files via nginx webserver
   frontend:
-    build: /frontend
+    build: frontend
     container_name: static-files
     ports:
       - "8080:80"
