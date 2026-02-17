@@ -1,19 +1,4 @@
 # File Structure
-```
-/.github/workflows/*.yml  # Contains yaml pipeline files
-/frontend
-│
-├── index.html            # Main entry page
-├── submitted.html        # Submission confirmation page
-│
-├── /scripts              # JavaScript files
-│   └── script.js
-│
-├── /img                  # Static image assets
-│   └── testimg.jpg
-├── Dockerfile            # Dockerfile for image building
-
-```
 
 ### pipeline.yml
 Automatically uploads all data from the `frontend` directory to the s3 bucket on each push to the main branch of the repo
@@ -30,15 +15,11 @@ Handles the saving of user input via the use of Javascript's sessions storage, s
 ### Dockerfile
 Tells docker how to build this project into a docker image
 
+### docker-compose
+Orchestrates all docker containers/services making it easier to run all containsers from one file
 
 
 # Running Locally
 
-To run locally we build the Docker image (from root dir) <br>
-`docker build -t static-files .`
-
-Then we can run the docker image built by running <br>
-`docker run -p 8080:80 --name webserver static-files`
-
-The running docker process is now hosting the files under the url <br>
-`http://localhost:8080`
+To run the docker container(s) we simple run the docker compose command <br>
+`docker compose up`

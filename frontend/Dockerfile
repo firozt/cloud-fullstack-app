@@ -1,4 +1,4 @@
-FROM nginx:1.25-alpine
+FROM nginx:alpine
 
 COPY frontend /usr/share/nginx/html/
 
