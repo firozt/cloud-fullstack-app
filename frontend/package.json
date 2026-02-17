@@ -3,11 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,html,json,md}": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "lint:js": "eslint \"**/*.js\"",
     "lint:css": "stylelint \"**/*.css\"",
     "format": "prettier --write \"**/*.{js,html,css}\"",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint": "npm run lint:js && npm run lint:css",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +27,7 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.0",
     "globals": "^17.3.0",
+    "husky": "^8.0.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
     "stylelint": "^17.3.0",
