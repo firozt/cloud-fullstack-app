@@ -1,26 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" href="index.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="center">
-        <div class="container submitted-screen" id="output">
-            <h2>All Data Submitted Successfully!</h2>
-            <p>Below is the data that has been saved</p>
-        </div>
+      <div class="container submitted-screen" id="output">
+        <h2>All Data Submitted Successfully!</h2>
+        <p>Below is the data that has been saved</p>
+      </div>
     </div>
-</body>
-<script>
-    const data = JSON.parse(sessionStorage.getItem("formData"));
-    const outputDiv = document.getElementById("output");
+  </body>
+  <script>
+    const data = JSON.parse(sessionStorage.getItem('formData'));
+    const outputDiv = document.getElementById('output');
     if (data) {
-        outputDiv.innerHTML += `
+      outputDiv.innerHTML += `
                     <table>
                         <thead>
                             <tr>
@@ -37,8 +36,7 @@
                     </table>
                     `;
     } else {
-        outputDiv.innerHTML += "<p>No form data found.</p>";
+      outputDiv.innerHTML += '<p>No form data found.</p>';
     }
-</script>
-
+  </script>
 </html>

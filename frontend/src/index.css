@@ -1,121 +1,123 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-    border: none;
-    outline: none;
-    font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  font-weight: normal;
 }
 
 body {
-    background-color: rgb(104, 104, 239);
+  background-color: rgb(104, 104, 239);
 }
 
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;    
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
 
-.container{
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    height: fit-content;
-    background-color: #FFFDF7;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.container {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  background-color: #fffdf7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .2s;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
 }
 
 form input {
-    width: 90%;
-    padding: 10px;
-    outline: none;
-    border: none;
-    margin: 5px;
-    border-bottom: 1px solid black;
+  width: 90%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  margin: 5px;
+  border-bottom: 1px solid black;
 }
 
 form input:hover {
-    background-color: #ffffff;
-    transition: all .5s;
+  background-color: #ffffff;
+  transition: all 0.5s;
 }
 
 form div {
-    width: min(100%, 400px);
-    padding: 10px;
+  width: min(100%, 400px);
+  padding: 10px;
 }
 
 header img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 header h1 {
-    text-align: center;
+  text-align: center;
 }
 
-header, form {
-    width: 400px;
+header,
+form {
+  width: 400px;
 }
 
 #submit {
-    width: 100%;
-    background-color: black;
-    color: white;
-    padding: 10px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #submit:hover {
-    background-color: rgb(144, 139, 206);
-    color: black;
-    transition: all .2s;
+  background-color: rgb(144, 139, 206);
+  color: black;
+  transition: all 0.2s;
 }
 
 #divider {
-    width: 1px;
-    background-color: black;
-    height: 400px;
-    margin: auto;
-    position: relative;
+  width: 1px;
+  background-color: black;
+  height: 400px;
+  margin: auto;
+  position: relative;
 }
 
 .submitted-screen {
-    border-radius: 5px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+  border-radius: 5px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
 }
 
 .submitted-screen th {
-    background-color: rgb(220, 220, 220);
+  background-color: rgb(220, 220, 220);
 }
 
-.submitted-screen th, .submitted-screen td {
-    width: min-content;
-    padding: 4px;
+.submitted-screen th,
+.submitted-screen td {
+  width: min-content;
+  padding: 4px;
 }
 
 .submitted-screen p {
-    position: relative;
-    bottom: 8px;
-    color: gray;
+  position: relative;
+  bottom: 8px;
+  color: gray;
 }
