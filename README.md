@@ -26,4 +26,4 @@ Build the docker image using <br>
 `docker build -t static-file .`
 
 Run the docker image as a container <br>
-`docker run --name webserver -p -d 8080:80 static-file`
+`docker run --name webserver -p 8080:80 static-file`
