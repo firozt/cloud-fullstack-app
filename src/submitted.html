@@ -11,7 +11,7 @@
     <div class="center">
       <div class="container submitted-screen" id="output">
         <h2>All Data Submitted Successfully!</h2>
-        <p>Below is the data that has been saved</p>
+        <p>Below is the personal information about you</p>
       </div>
     </div>
   </body>
@@ -23,17 +23,21 @@
                     <table>
                         <thead>
                             <tr>
-                            <th>Form Field</th>
-                            <th>Value Given</th>
+                                <th>Form Field</th>
+                                <th>Value Given</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr><th>Full Name</th><td>${data.name}</td></tr>
                             <tr><th>Email</th><td>${data.email}</td></tr>
-                            <tr><th>Phone Number</th><td>${data.phone_number}</td></tr>
                             <tr><th>DOB</th><td>${data.dob}</td></tr>
+                            <tr><th>Bio</th><td>${data.bio}</td></tr>
+                            <tr><th>Fact About You</th><td>${data.fact}</td></tr>
+                            <tr><th>Favourite Music Artist</th><td>${data.music}</td></tr>
                         </tbody>
                     </table>
+                    <button onclick="window.location.href='dashboard.html'" id="submit">Generate Card</button>
+                    <button onclick="window.location.href='index.html'" id="submit">Go Back</button>
                     `;
     } else {
       outputDiv.innerHTML += '<p>No form data found.</p>';

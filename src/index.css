@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: rgb(104 104 239);
+  background-color: rgb(200 200 200);
 }
 
 .center {
@@ -30,7 +30,7 @@ body {
 }
 
 form {
-  padding: 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -64,8 +64,23 @@ header img {
   object-fit: cover;
 }
 
-header h1 {
+header h1,
+h1 {
   text-align: center;
+}
+
+textarea {
+  height: 60px;
+  border-bottom: 1px solid black;
+  margin-top: 15px;
+  width: 95%;
+  margin-left: 2%;
+  resize: vertical;
+  font-size: 14px;
+}
+
+.spaced {
+  margin: 5rem;
 }
 
 header,
@@ -85,7 +100,7 @@ button:hover {
 }
 
 #submit:hover {
-  background-color: rgb(144 139 206);
+  background-color: rgb(0 0 0);
   color: black;
   transition: all 0.2s;
 }
@@ -99,7 +114,6 @@ button:hover {
 }
 
 .submitted-screen {
-  border-radius: 5px;
   padding: 40px;
   display: flex;
   flex-direction: column;

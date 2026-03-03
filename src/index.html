@@ -8,14 +8,15 @@
   </head>
 
   <body>
-    <div class="center">
+    <div class="center spaced">
       <div class="container">
-        <header>
-          <img src="images/testimg.jpg" />
-        </header>
+        <!-- <header> -->
+        <!--   <img src="images/testimg.jpg" /> -->
+        <!-- </header> -->
         <form>
+          <h1>Fill In The Form To Generate A User Card</h1>
           <div>
-            <p>Full Name</p>
+            <p>Name</p>
             <input
               placeholder="John Doe"
               name="fullname"
@@ -35,16 +36,6 @@
             />
           </div>
           <div>
-            <p>Phone Number</p>
-            <input
-              placeholder="+44 7--- -----"
-              name="phonenumber"
-              type="tel"
-              id="phone-number"
-              required
-            />
-          </div>
-          <div>
             <p>Date Of Birth</p>
             <input
               placeholder="dd/mm/yy"
@@ -53,6 +44,40 @@
               id="dob"
               required
             />
+          </div>
+          <div>
+            <p>Bio</p>
+            <textarea
+              placeholder="Write a short bio..."
+              name="bio"
+              id="bio"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <p>Fact About You</p>
+            <input
+              placeholder="I was born on a leap day"
+              name="fact"
+              type="text"
+              id="fact"
+              required
+            />
+          </div>
+          <div>
+            <p>Favourite Music Artist</p>
+            <input
+              placeholder="Linkin Park"
+              name="music"
+              type="text"
+              id="music"
+              required
+            />
+          </div>
+          <div>
+            <p>Profile Picture</p>
+            <input type="file" id="pfp" name="pfp" accept="image/*" required />
           </div>
           <button type="submit" id="submit">Submit</button>
         </form>

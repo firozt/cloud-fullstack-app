@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display Card</title>
+    <link rel="stylesheet" href="card.css" />
+  </head>
+
+  <body>
+    <div class="center">
+      <h1 id="card-title">Your Generated Card</h1>
+      <div class="card">
+        <h2 id="name"></h2>
+        <div class="avatar-wrapper">
+          <img id="avatarImg" class="avatar" alt="Profile picture" src="" />
+        </div>
+        <div id="divider"></div>
+        <div class="bio" id="bio"></div>
+        <div class="info">
+          <div>
+            <img src="./images/birthday.svg" />
+            <span id="dob"></span>
+          </div>
+          <div>
+            <img src="./images/mail.svg" />
+            <span id="email"></span>
+          </div>
+          <div>
+            <img src="./images/bulb.svg" />
+            <span id="fact"></span>
+          </div>
+          <div>
+            <img src="./images/music.svg" />
+            <span id="music"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // fill up the fields with data
+      const data = JSON.parse(sessionStorage.getItem('formData') || '{}');
+
+      document.getElementById('name').textContent = data.name || 'Anonymous';
+      document.getElementById('bio').textContent = data.bio || '';
+      document.getElementById('dob').textContent = data.dob || '';
+      document.getElementById('email').textContent = data.email || '';
+      document.getElementById('fact').textContent = data.fact || '';
+      document.getElementById('music').textContent = data.music || '';
+
+      const profilePicture = sessionStorage.getItem('avatar');
+
+      avatarImg.src = profilePicture;
+    </script>
+  </body>
+</html>
