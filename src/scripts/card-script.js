@@ -8,10 +8,8 @@ document.getElementById('email').textContent = data.email || '';
 document.getElementById('fact').textContent = data.fact || '';
 document.getElementById('music').textContent = data.music || '';
 
-const profilePicture = sessionStorage.getItem('avatar');
-if (profilePicture) {
-  document.getElementById('avatarImg').src = profilePicture;
-}
+const profilePicture = sessionStorage.getItem('profileImg');
+document.getElementById('profile-img').src = profilePicture;
 
 // panel event listeners, changes color if elements using input elements
 const card = document.getElementById('card');

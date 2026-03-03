@@ -3,14 +3,10 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
   const form = e.target;
 
-  const fileInput = document.getElementById('pfp');
+  const fileInput = document.getElementById('profileImg');
 
-  let profilePicture = sessionStorage.getItem('pfp');
-
-  if (fileInput && fileInput.files.length > 0) {
-    const file = fileInput.files[0];
-    storeImageInSession(file);
-    profilePicture = sessionStorage.getItem('pfp');
+  if (fileInput.files.length > 0) {
+    storeImageInSession(fileInput.files[0]);
   }
 
   const formData = {
@@ -20,7 +16,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
     bio: form.bio.value,
     fact: form.fact.value,
     music: form.music.value,
-    profilepicture: profilePicture,
   };
 
   sessionStorage.setItem('formData', JSON.stringify(formData));
@@ -40,7 +35,7 @@ function storeImageInSession(file) {
   const reader = new FileReader();
 
   reader.onload = function (e) {
-    sessionStorage.setItem('avatar', e.target.result);
+    sessionStorage.setItem('profileImg', e.target.result);
   };
 
   reader.readAsDataURL(file);
