@@ -100,7 +100,7 @@ button:hover {
 }
 
 #submit:hover {
-  background-color: rgb(0 0 0);
+  background-color: rgb(200 200 200);
   color: black;
   transition: all 0.2s;
 }
@@ -115,6 +115,7 @@ button:hover {
 
 .submitted-screen {
   padding: 40px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 10px;

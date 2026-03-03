@@ -9,49 +9,71 @@
 
   <body>
     <div class="center">
-      <h1 id="card-title">Your Generated Card</h1>
-      <div class="card">
-        <h2 id="name"></h2>
-        <div class="avatar-wrapper">
-          <img id="avatarImg" class="avatar" alt="Profile picture" src="" />
+      <h1 id="card-title">Card Settings</h1>
+      <div class="layout">
+        <div class="card" id="card">
+          <h2 id="name"></h2>
+          <div class="avatar-wrapper">
+            <img id="avatarImg" class="avatar" alt="Profile picture" src="" />
+          </div>
+          <div id="divider"></div>
+          <div class="bio" id="bio"></div>
+          <div class="info" id="infoSection">
+            <div id="dobRow">
+              <img src="./images/birthday.svg" />
+              <span id="dob"></span>
+            </div>
+            <div id="emailRow">
+              <img src="./images/mail.svg" />
+              <span id="email"></span>
+            </div>
+            <div id="factRow">
+              <img src="./images/bulb.svg" />
+              <span id="fact"></span>
+            </div>
+            <div id="musicRow">
+              <img src="./images/music.svg" />
+              <span id="music"></span>
+            </div>
+          </div>
         </div>
-        <div id="divider"></div>
-        <div class="bio" id="bio"></div>
-        <div class="info">
-          <div>
-            <img src="./images/birthday.svg" />
-            <span id="dob"></span>
-          </div>
-          <div>
-            <img src="./images/mail.svg" />
-            <span id="email"></span>
-          </div>
-          <div>
-            <img src="./images/bulb.svg" />
-            <span id="fact"></span>
-          </div>
-          <div>
-            <img src="./images/music.svg" />
-            <span id="music"></span>
-          </div>
+
+        <div class="panel">
+          <h3>Customize</h3>
+
+          <label>
+            Background
+            <input type="color" id="bgColor" value="#fffdf7" />
+          </label>
+
+          <label>
+            Bio Text Color
+            <input type="color" id="bioTextColor" value="#808080" />
+          </label>
+
+          <label>
+            Text Color
+            <input type="color" id="textColor" value="#000000" />
+          </label>
+
+          <label
+            >Show DOB <input type="checkbox" id="toggleDob" checked
+          /></label>
+          <label
+            >Show Email <input type="checkbox" id="toggleEmail" checked
+          /></label>
+          <label
+            >Show Fact <input type="checkbox" id="toggleFact" checked
+          /></label>
+          <label
+            >Show Music <input type="checkbox" id="toggleMusic" checked
+          /></label>
         </div>
       </div>
     </div>
 
-    <script>
-      // fill up the fields with data
-      const data = JSON.parse(sessionStorage.getItem('formData') || '{}');
+    <script></script>
 
-      document.getElementById('name').textContent = data.name || 'Anonymous';
-      document.getElementById('bio').textContent = data.bio || '';
-      document.getElementById('dob').textContent = data.dob || '';
-      document.getElementById('email').textContent = data.email || '';
-      document.getElementById('fact').textContent = data.fact || '';
-      document.getElementById('music').textContent = data.music || '';
-
-      const profilePicture = sessionStorage.getItem('avatar');
-
-      avatarImg.src = profilePicture;
-    </script>
+    <script src="scripts/card-script.js"></script>
   </body>
 </html>
