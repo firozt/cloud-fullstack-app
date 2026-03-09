@@ -44,8 +44,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Upload site to S3
-        run: aws s3 sync src/ s3://mthree-peregrine-s3-3/ramizmaryiah --delete
-
+        run: aws s3 sync src/ s3://mthree-peregrine-s3-3/ramizmaryiah
   push-ecr:
     runs-on: ubuntu-latest
     needs: lint
