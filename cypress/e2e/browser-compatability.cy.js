@@ -55,12 +55,8 @@ ALL_URLS.forEach((CurrentURL) => {
           const srcVal = $script.attr('src');
           const url = new URL(srcVal, CurrentURL).href;
           cy.request(url).its('status').should('eq', 200);
-          // cy.request(CurrentURL + srcVal).its('status').should('eq', 200)
         });
       });
     });
   });
 });
-
-// tests to do relating to my actual project
-describe('form page', () => {});
