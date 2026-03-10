@@ -1,2 +1,10 @@
 node_modules/
 .terraform/
+
+# cypress test artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# cypress cache
+.cypress-cache/
