@@ -45,6 +45,7 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
+          install: false
           browser: webkit
           start: npx serve src
           wait-on: 'http://localhost:3000'
