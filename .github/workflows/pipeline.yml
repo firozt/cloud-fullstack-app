@@ -28,8 +28,8 @@ jobs:
       - name: Check formatting
         run: npx prettier --check "**/*.{js,html,css}"
         working-directory: .
-    runs-on: ubuntu-latest
-  # cypress-e2e-tests-safari:
+  # cypress-e2e-tests:
+  #   runs-on: ubuntu-latest
   #   needs: lint
   #   steps:
   #     - name: Checkout code
@@ -50,7 +50,7 @@ jobs:
   #         start: npx serve src
   #         wait-on: 'http://localhost:3000'
   #         config: video=false,screenshotOnRunFailure=false
-  cypress-e2e-tests-brave:
+  cypress-e2e-tests:
     runs-on: ubuntu-latest
     needs: lint
 
