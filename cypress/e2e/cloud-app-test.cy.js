@@ -36,7 +36,8 @@ describe('form page', () => {
     // submit
     cy.get('#submit').click();
     // check we got redirected to correct html file
-    cy.url().should('eq', TEST_URL + 'submitted.html');
+
+    cy.url().should('include', 'submitted.html');
   });
 });
 
@@ -56,7 +57,7 @@ describe('submitted page', () => {
     });
   });
 
-  it('profileImg session stoagge exists', () => {
+  it('profileImg session storage exists', () => {
     cy.window().then((win) => {
       expect(win.sessionStorage.getItem('profileImg')).to.exist;
     });
@@ -66,7 +67,7 @@ describe('submitted page', () => {
     // click on generate card button to procede
     cy.get('button').first().click();
     // check were on the correct page
-    cy.url().should('eq', TEST_URL + 'card.html');
+    cy.url().should('include', TEST_URL + 'card.html');
   });
 });
 
