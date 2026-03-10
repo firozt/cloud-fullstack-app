@@ -12,6 +12,9 @@ export default defineConfig([
         ...globals.mocha,
         cy: "readonly",
         Cypress: "readonly",
+        expect: "readonly",
+        assert: "readonly",
+        chai: "readonly",
       },
     },
   },
@@ -19,7 +22,7 @@ export default defineConfig([
     files: ["cypress.config.js"],
     languageOptions: {
       globals: {
-        ...globals.node, // fixes 'module is not defined'
+        ...globals.node,
       },
     },
   },
@@ -30,7 +33,7 @@ export default defineConfig([
       },
     },
     rules: {
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], // ignore params prefixed with _
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-undef": "error",
     },
   },
