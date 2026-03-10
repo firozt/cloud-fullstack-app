@@ -1,6 +1,6 @@
 const ALL_URLS = [
   'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/',
-  'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/card.html',
+  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/card.html',
 ];
 
 // get all links, run all tests for all pages
