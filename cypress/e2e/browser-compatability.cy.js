@@ -1,8 +1,8 @@
 // general browser tests, should work for any website given
 
 const ALL_URLS = [
-  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/', // homepage
-  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/submitted.html', // submit screen
+  'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/', // homepage
+  'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/submitted.html', // submit screen
   // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/card.html', // card page
 ];
 

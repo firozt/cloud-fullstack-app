@@ -1,12 +1,7 @@
+// tests for specifically my mthree website project, will fail for random websites
 const TEST_URL =
   'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
-// tests for specifically my mthree website project, will fail for random websites
-// sanity check
-describe('url loads', () => {
-  it('get request to homepage', () => {
-    cy.visit(TEST_URL);
-  });
-});
+
 // form page tests
 describe('form page', () => {
   beforeEach(() => {
@@ -27,18 +22,9 @@ describe('form page', () => {
   });
 
   it('email validation logic', () => {
-    // fill form
-    cy.get('#name').clear().type('Jane Smith');
+    cy.fillForm();
+    // override valid data from fixture with invalid email
     cy.get('#email').clear().type('invalid email');
-    cy.get('#dob').type('1990-06-15');
-    cy.get('#bio')
-      .clear()
-      .type('I am a software developer who loves hiking and photography.');
-    cy.get('#fact')
-      .clear()
-      .type('I once visited 5 countries in a single week.');
-    cy.get('#music').clear().type('Arctic Monkeys');
-    cy.get('#profileImg').selectFile('cypress/fixtures/test-image.png');
     cy.get('#submit').click();
     // check if invalid prompt appears for user
     cy.get('#email:invalid').should('exist');
@@ -46,17 +32,7 @@ describe('form page', () => {
 
   it('valid redirect on form', () => {
     // fill form
-    cy.get('#name').clear().type('Jane Smith');
-    cy.get('#email').clear().type('mail@mail.com');
-    cy.get('#dob').type('1990-06-15');
-    cy.get('#bio')
-      .clear()
-      .type('I am a software developer who loves hiking and photography.');
-    cy.get('#fact')
-      .clear()
-      .type('I once visited 5 countries in a single week.');
-    cy.get('#music').clear().type('Arctic Monkeys');
-    cy.get('#profileImg').selectFile('cypress/fixtures/test-image.png');
+    cy.fillForm();
     // submit
     cy.get('#submit').click();
     // check we got redirected to correct html file
@@ -64,33 +40,25 @@ describe('form page', () => {
   });
 });
 
+// submitted page tests
 describe('submitted page', () => {
   // visits homepage fills out form and is now on the submitted page
   beforeEach(() => {
     cy.visit(TEST_URL);
-    cy.get('#name').clear().type('Jane Smith');
-    cy.get('#email').clear().type('mail@mail.com');
-    cy.get('#dob').type('1990-06-15');
-    cy.get('#bio')
-      .clear()
-      .type('I am a software developer who loves hiking and photography.');
-    cy.get('#fact')
-      .clear()
-      .type('I once visited 5 countries in a single week.');
-    cy.get('#music').clear().type('Arctic Monkeys');
-    cy.get('#profileImg').selectFile('cypress/fixtures/test-image.png');
+    cy.fillForm();
     cy.get('#submit').click();
+    cy.url().should('include', 'submitted.html');
   });
 
   it('form data session storage exists', () => {
     cy.window().then((win) => {
-      expect(win.localStorage.getItem('formData')).to.exist;
+      expect(win.sessionStorage.getItem('formData')).to.exist;
     });
   });
 
   it('profileImg session stoagge exists', () => {
     cy.window().then((win) => {
-      expect(win.localStorage.getItem('profileImg')).to.exist;
+      expect(win.sessionStorage.getItem('profileImg')).to.exist;
     });
   });
 
@@ -102,4 +70,72 @@ describe('submitted page', () => {
   });
 });
 
-describe('card page', () => {});
+// card page tests
+describe('card page', () => {
+  beforeEach(() => {
+    cy.visit(TEST_URL);
+    cy.fillForm();
+    cy.get('#submit').click();
+    cy.url().should('include', 'submitted.html');
+    cy.get('#submit').click();
+    cy.url().should('include', 'card.html');
+  });
+
+  // color pickers
+  it('background color changes card background', () => {
+    cy.get('#bgColor').invoke('val', '#ff0000').trigger('input');
+    cy.get('#card').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+
+  it('text color changes card text color', () => {
+    cy.get('#textColor').invoke('val', '#00ff00').trigger('input');
+    cy.get('#card').should('have.css', 'color', 'rgb(0, 255, 0)');
+  });
+
+  it('bio text color changes bio color', () => {
+    cy.get('#bioTextColor').invoke('val', '#0000ff').trigger('input');
+    cy.get('#bio').should('have.css', 'color', 'rgb(0, 0, 255)');
+  });
+
+  // toggles - hide
+  it('unchecking DOB hides dob row', () => {
+    cy.get('#toggleDob').uncheck();
+    cy.get('#dobRow').should('have.css', 'display', 'none');
+  });
+
+  it('unchecking email hides email row', () => {
+    cy.get('#toggleEmail').uncheck();
+    cy.get('#emailRow').should('have.css', 'display', 'none');
+  });
+
+  it('unchecking fact hides fact row', () => {
+    cy.get('#toggleFact').uncheck();
+    cy.get('#factRow').should('have.css', 'display', 'none');
+  });
+
+  it('unchecking music hides music row', () => {
+    cy.get('#toggleMusic').uncheck();
+    cy.get('#musicRow').should('have.css', 'display', 'none');
+  });
+
+  // toggles - show again
+  it('rechecking DOB shows dob row', () => {
+    cy.get('#toggleDob').uncheck().check();
+    cy.get('#dobRow').should('have.css', 'display', 'flex');
+  });
+
+  it('rechecking email shows email row', () => {
+    cy.get('#toggleEmail').uncheck().check();
+    cy.get('#emailRow').should('have.css', 'display', 'flex');
+  });
+
+  it('rechecking fact shows fact row', () => {
+    cy.get('#toggleFact').uncheck().check();
+    cy.get('#factRow').should('have.css', 'display', 'flex');
+  });
+
+  it('rechecking music shows music row', () => {
+    cy.get('#toggleMusic').uncheck().check();
+    cy.get('#musicRow').should('have.css', 'display', 'flex');
+  });
+});
