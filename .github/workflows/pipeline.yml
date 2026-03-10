@@ -40,6 +40,8 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm install
+      - name: Install webkit browser
+        run: npx playwright install webkit --with-deps
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
