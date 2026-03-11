@@ -51,22 +51,12 @@ jobs:
   #         wait-on: 'http://localhost:3000'
   #         config: video=false,screenshotOnRunFailure=false
 
-  cypress-brave:
-    name: Cypress on Brave
-    runs-on: ubuntu-latest
 
+  cypress-e2e-tests-brave:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Install Brave Browser
         run: |
@@ -78,10 +68,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y brave-browser
 
-      - name: Run Cypress tests on Brave
-        uses: cypress-io/github-action@v6
-        with:
-          browser: /usr/bin/brave-browser
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress with Brave
+        run: npx cypress run --browser /usr/bin/brave-browser
 
   deploy-s3:
     runs-on: ubuntu-latest
