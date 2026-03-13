@@ -1,24 +1,32 @@
 # File Structure
 
-### pipeline.yml
+### .github/workflows/
 
-Automatically uploads all data from the `frontend` directory to the s3 bucket on each push to the main branch of the repo
+Contains github actions workflows that automatically uploads all data from the `src` directory to the s3 bucket, builds a new docker image and pushes it to an ECR, runs cypress tests on UI and eslint/formatting on codebase
 
-### index.html
+### src/
 
-Main entrypoint of the website, takes user information via a form
-
-### submitted.html
-
-Shows a confirmation of the data the user has given into the form, showing each field given in a table
-
-### script.js
-
-Handles the saving of user input via the use of Javascript's sessions storage, storaing each field
+Contains source files, all contents of this directory will be pushed to the S3 bucket on passing of tests
 
 ### Dockerfile
 
 Tells docker how to build this project into a docker image
+
+### Cypress/
+
+Contains cypress files for UI testing
+
+### Cypress/fixtures
+
+Contains json files that act as test data
+
+### Cypress/support
+
+Contains helper functions imported by the test logic
+
+### Cypress/e2e
+
+Contains the end to end tests for the project
 
 # Running Locally
 
