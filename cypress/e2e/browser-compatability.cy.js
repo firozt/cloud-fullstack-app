@@ -1,20 +1,12 @@
 // general browser tests, should work for any website given
 
-const ALL_URLS = [
+const TEST_URLS = [
   'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/', // homepage
   'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/submitted.html', // submit screen
-  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/card.html', // card page
 ];
 
 // get all links, run all tests for all pages
-ALL_URLS.forEach((CurrentURL) => {
-  // sanity check
-  describe('sanity check', () => {
-    it('passes', () => {
-      cy.visit(CurrentURL);
-    });
-  });
-
+TEST_URLS.forEach((CurrentURL) => {
   // browser compatability checks
   describe(`browser compatability tests for url ${CurrentURL}`, () => {
     beforeEach(() => {
@@ -22,7 +14,7 @@ ALL_URLS.forEach((CurrentURL) => {
     });
 
     // checks theres an index.html (or equiv)
-    it('homepage check', () => {
+    it('page body loads successfully', () => {
       cy.get('body').should('exist');
     });
 
@@ -58,6 +50,24 @@ ALL_URLS.forEach((CurrentURL) => {
           const srcVal = $script.attr('src');
           const url = new URL(srcVal, CurrentURL).href;
           cy.request(url).its('status').should('eq', 200);
+        });
+      });
+    });
+
+    // validate different screen sizes
+    const viewports = [
+      { name: 'mobile', width: 480, height: 812 },
+      { name: 'tablet', width: 768, height: 1024 },
+      { name: 'desktop', width: 1920, height: 1080 },
+    ];
+
+    viewports.forEach(({ name, width, height }) => {
+      it(`should have no horizontal overflow on ${name}`, () => {
+        cy.viewport(width, height);
+        cy.document().then((doc) => {
+          const docWidth = doc.documentElement.scrollWidth;
+          const viewportWidth = doc.documentElement.clientWidth;
+          expect(docWidth).to.be.lte(viewportWidth);
         });
       });
     });

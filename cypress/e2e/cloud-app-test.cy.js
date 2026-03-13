@@ -69,6 +69,10 @@ describe('submitted page', () => {
     // check were on the correct page
     cy.url().should('include', TEST_URL + 'card.html');
   });
+
+  it('testing that capitaliseWords works', () => {
+    cy.get('td').first().should('have.text', 'Jane Smith');
+  });
 });
 
 // card page tests
