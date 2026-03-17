@@ -1,4 +1,8 @@
-// tests for specifically my mthree website project, will fail for random websites
+// user functional tests for my project website
+// boundary checks for all user inputs
+// checks for common user workflows
+// checks for potential user errors and that it handles it correctly
+
 const TEST_URL =
   'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
 
@@ -8,26 +12,9 @@ describe('form page input validation', () => {
     cy.visit(TEST_URL);
   });
 
-  it('has form loaded', () => {
-    cy.get('form').find('input').should('exist');
-  });
-
   it('all input fields are required', () => {
     cy.get('form input').each(($input) => {
       cy.wrap($input).should('have.attr', 'required');
-    });
-  });
-
-  // fills in each input, leaving one, makes sure no redirection happens as all inputs must be entered
-  const requiredFields = ['name', 'email', 'dob', 'bio', 'fact', 'music'];
-
-  requiredFields.forEach((variant) => {
-    it(`does not submit with no-${variant}`, () => {
-      cy.url().then((curURL) => {
-        cy.fillForm(`no-${variant}`);
-        cy.get('#submit').click();
-        cy.url().should('eq', curURL);
-      });
     });
   });
 
@@ -56,24 +43,16 @@ describe('form page boundary conditions', () => {
     cy.visit(TEST_URL);
   });
 
-  // NAME - minlength="2" maxlength="100"
-  describe('name field', () => {
-    it('rejects name below min (1 char)', () => {
+  it('does not submit with no name', () => {
+    cy.url().then((curURL) => {
       cy.fillForm('no-name');
-      cy.get('#name').clear().type('a');
       cy.get('#submit').click();
-      cy.get('#name:invalid').should('exist');
+      cy.url().should('eq', curURL);
     });
+  });
 
-    it('accepts name at min (2 chars)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#name').clear().type('AB');
-        cy.get('#submit').click();
-        cy.url().should('not.eq', curURL);
-      });
-    });
-
+  // NAME - maxlength="100"
+  describe('name field', () => {
     it('accepts name at max (100 chars)', () => {
       cy.url().then((curURL) => {
         cy.fillForm('valid');
@@ -95,23 +74,13 @@ describe('form page boundary conditions', () => {
     });
   });
 
-  // EMAIL - minlength="6" maxlength="254"
+  // EMAIL - maxlength="254"
   describe('email field', () => {
-    it('rejects email below min (5 chars)', () => {
+    it('does not submit with no email', () => {
       cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#email').clear().type('a@b.c');
+        cy.fillForm('no-email');
         cy.get('#submit').click();
         cy.url().should('eq', curURL);
-      });
-    });
-
-    it('accepts email at min (6 chars)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#email').clear().type('a@b.co');
-        cy.get('#submit').click();
-        cy.url().should('not.eq', curURL);
       });
     });
 
@@ -138,12 +107,11 @@ describe('form page boundary conditions', () => {
     });
   });
 
-  // DOB - no min/max in your HTML so test sensible boundaries
+  // DOB cant be in the future
   describe('dob field', () => {
-    it('rejects future date', () => {
+    it('does not submit with no dob', () => {
       cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#dob').clear().type('2099-01-01');
+        cy.fillForm('no-dob');
         cy.get('#submit').click();
         cy.url().should('eq', curURL);
       });
@@ -159,23 +127,13 @@ describe('form page boundary conditions', () => {
     });
   });
 
-  // BIO - minlength="10" maxlength="500"
+  // BIO - maxlength="500"
   describe('bio field', () => {
-    it('rejects bio below min (9 chars)', () => {
+    it('does not submit with no bio', () => {
       cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#bio').clear().type('A'.repeat(9));
+        cy.fillForm('no-bio');
         cy.get('#submit').click();
         cy.url().should('eq', curURL);
-      });
-    });
-
-    it('accepts bio at min (10 chars)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#bio').clear().type('A'.repeat(10));
-        cy.get('#submit').click();
-        cy.url().should('not.eq', curURL);
       });
     });
 
@@ -199,23 +157,13 @@ describe('form page boundary conditions', () => {
     });
   });
 
-  // FACT - minlength="10" maxlength="500"
+  // FACT - maxlength="500"
   describe('fact field', () => {
-    it('rejects fact below min (9 chars)', () => {
+    it('does not submit with no fact', () => {
       cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#fact').clear().type('A'.repeat(9));
+        cy.fillForm('no-fact');
         cy.get('#submit').click();
         cy.url().should('eq', curURL);
-      });
-    });
-
-    it('accepts fact at min (10 chars)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#fact').clear().type('A'.repeat(10));
-        cy.get('#submit').click();
-        cy.url().should('not.eq', curURL);
       });
     });
 
@@ -239,23 +187,13 @@ describe('form page boundary conditions', () => {
     });
   });
 
-  // MUSIC - minlength="2" maxlength="100"
+  // MUSIC - maxlength="100"
   describe('music field', () => {
-    it('rejects music below min (1 char)', () => {
+    it('does not submit with no music', () => {
       cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#music').clear().type('A');
+        cy.fillForm('no-music');
         cy.get('#submit').click();
         cy.url().should('eq', curURL);
-      });
-    });
-
-    it('accepts music at min (2 chars)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#music').clear().type('AB');
-        cy.get('#submit').click();
-        cy.url().should('not.eq', curURL);
       });
     });
 

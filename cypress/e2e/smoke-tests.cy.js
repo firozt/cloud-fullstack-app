@@ -56,7 +56,7 @@ TEST_URLS.forEach((CurrentURL) => {
 
     // validate different screen sizes
     const viewports = [
-      // { name: 'mobile', width: 480, height: 812 },
+      // { name: 'mobile', width: 480, height: 812 }, // currently commented as my current page does not support mobile right now
       { name: 'tablet', width: 768, height: 1024 },
       { name: 'desktop', width: 1920, height: 1080 },
     ];
