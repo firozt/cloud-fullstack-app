@@ -1,55 +1,55 @@
 // tests for specifically my mthree website project, will fail for random websites
 const TEST_URL =
-  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
+  'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
 
-  // form page tests
-  describe('form page input validation', () => {
-    beforeEach(() => {
-      cy.visit(TEST_URL);
-    });
+// form page tests
+describe('form page input validation', () => {
+  beforeEach(() => {
+    cy.visit(TEST_URL);
+  });
 
-    it('has form loaded', () => {
-      cy.get('form').find('input').should('exist');
-    });
+  it('has form loaded', () => {
+    cy.get('form').find('input').should('exist');
+  });
 
-    it('all input fields are required', () => {
-      cy.get('form input').each(($input) => {
-        cy.wrap($input).should('have.attr', 'required');
-      });
-    });
-
-    // fills in each input, leaving one, makes sure no redirection happens as all inputs must be entered
-    const requiredFields = ['name', 'email', 'dob', 'bio', 'fact', 'music'];
-
-    requiredFields.forEach((variant) => {
-      it(`does not submit with no-${variant}`, () => {
-        cy.url().then((curURL) => {
-          cy.fillForm(`no-${variant}`);
-          cy.get('#submit').click();
-          cy.url().should('eq', curURL);
-        });
-      });
-    });
-
-    it('email validation logic', () => {
-      cy.fillForm('valid');
-      // override valid data from fixture with invalid email
-      cy.get('#email').clear().type('invalid email');
-      cy.get('#submit').click();
-      // check if invalid prompt appears for user
-      cy.get('#email:invalid').should('exist');
-    });
-
-    it('valid redirect on form', () => {
-      // fill form
-      cy.fillForm('valid');
-      // submit
-      cy.get('#submit').click();
-      // check we got redirected to correct html file
-
-      cy.url().should('include', 'submitted.html');
+  it('all input fields are required', () => {
+    cy.get('form input').each(($input) => {
+      cy.wrap($input).should('have.attr', 'required');
     });
   });
+
+  // fills in each input, leaving one, makes sure no redirection happens as all inputs must be entered
+  const requiredFields = ['name', 'email', 'dob', 'bio', 'fact', 'music'];
+
+  requiredFields.forEach((variant) => {
+    it(`does not submit with no-${variant}`, () => {
+      cy.url().then((curURL) => {
+        cy.fillForm(`no-${variant}`);
+        cy.get('#submit').click();
+        cy.url().should('eq', curURL);
+      });
+    });
+  });
+
+  it('email validation logic', () => {
+    cy.fillForm('valid');
+    // override valid data from fixture with invalid email
+    cy.get('#email').clear().type('invalid email');
+    cy.get('#submit').click();
+    // check if invalid prompt appears for user
+    cy.get('#email:invalid').should('exist');
+  });
+
+  it('valid redirect on form', () => {
+    // fill form
+    cy.fillForm('valid');
+    // submit
+    cy.get('#submit').click();
+    // check we got redirected to correct html file
+
+    cy.url().should('include', 'submitted.html');
+  });
+});
 
 describe('form page boundary conditions', () => {
   beforeEach(() => {
