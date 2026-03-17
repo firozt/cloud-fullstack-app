@@ -1,9 +1,9 @@
 document.querySelector('form').addEventListener('submit', (e) => {
   const form = e.target;
+  e.preventDefault();
 
   // check for html validation, cypress needs this to work
   if (!form.checkValidity()) {
-    e.preventDefault();
     form.reportValidity();
     return;
   }
