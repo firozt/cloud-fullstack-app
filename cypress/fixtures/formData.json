@@ -1,8 +1,58 @@
 {
-  "name": "jane smith",
-  "email": "mail@mail.com",
-  "dob": "1990-06-15",
-  "bio": "I am a software developer who loves hiking and photography.",
-  "fact": "I once visited 5 countries in a single week.",
-  "music": "Arctic Monkeys"
+  "valid": {
+    "name": "Jane Smith",
+    "email": "mail@mail.com",
+    "dob": "1990-06-15",
+    "bio": "I am a software developer who loves hiking and photography.",
+    "fact": "I once visited 5 countries in a single week.",
+    "music": "Arctic Monkeys"
+  },
+  "no-name": {
+    "name": "",
+    "email": "mail@mail.com",
+    "dob": "1990-06-15",
+    "bio": "I am a software developer who loves hiking and photography.",
+    "fact": "I once visited 5 countries in a single week.",
+    "music": "Arctic Monkeys"
+  },
+  "no-email": {
+    "name": "Michael Orange",
+    "email": "",
+    "dob": "2001-01-01",
+    "bio": "I love playing video games and playing instruments.",
+    "fact": "I was born on a leap year.",
+    "music": "Drake"
+  },
+  "no-dob": {
+    "name": "Sarah Collins",
+    "email": "sarah.collins@example.com",
+    "dob": "",
+    "bio": "I enjoy painting and long walks on the beach.",
+    "fact": "I have never lost a game of chess.",
+    "music": "Fleetwood Mac"
+  },
+  "no-bio": {
+    "name": "Tom Fletcher",
+    "email": "tom.fletcher@example.com",
+    "dob": "1985-03-22",
+    "bio": "",
+    "fact": "I built my own PC at age 12.",
+    "music": "Radiohead"
+  },
+  "no-fact": {
+    "name": "Priya Patel",
+    "email": "priya.patel@example.com",
+    "dob": "1995-11-08",
+    "bio": "I'm a teacher who loves travelling and trying new foods.",
+    "fact": "",
+    "music": "Beyoncé"
+  },
+  "no-music": {
+    "name": "Chris Dawson",
+    "email": "chris.dawson@example.com",
+    "dob": "1988-07-30",
+    "bio": "Avid cyclist and amateur photographer.",
+    "fact": "I cycled across three countries in one trip.",
+    "music": ""
+  }
 }
