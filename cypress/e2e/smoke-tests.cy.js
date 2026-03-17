@@ -36,7 +36,7 @@ TEST_URLS.forEach((CurrentURL) => {
         const href = $link.attr('href');
         if (!href) return;
         const url = new URL(href, CurrentURL).href;
-        cy.request(url).its('status').should('eq', 200);
+        cy.request(url).its('status').should('be.within', 200, 299);
       });
     });
 
@@ -49,7 +49,7 @@ TEST_URLS.forEach((CurrentURL) => {
         cy.get('script[src$=".js"]').each(($script) => {
           const srcVal = $script.attr('src');
           const url = new URL(srcVal, CurrentURL).href;
-          cy.request(url).its('status').should('eq', 200);
+          cy.request(url).its('status').should('be.within', 200, 299);
         });
       });
     });

@@ -1,55 +1,55 @@
 // tests for specifically my mthree website project, will fail for random websites
 const TEST_URL =
-  'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
+  // 'http://mthree-peregrine-s3-3.s3-website-us-east-1.amazonaws.com/ramizmaryiah/';
 
-// form page tests
-describe('form page input validation', () => {
-  beforeEach(() => {
-    cy.visit(TEST_URL);
-  });
-
-  it('has form loaded', () => {
-    cy.get('form').find('input').should('exist');
-  });
-
-  it('all input fields are required', () => {
-    cy.get('form input').each(($input) => {
-      cy.wrap($input).should('have.attr', 'required');
+  // form page tests
+  describe('form page input validation', () => {
+    beforeEach(() => {
+      cy.visit(TEST_URL);
     });
-  });
 
-  // fills in each input, leaving one, makes sure no redirection happens as all inputs must be entered
-  const requiredFields = ['name', 'email', 'dob', 'bio', 'fact', 'music'];
+    it('has form loaded', () => {
+      cy.get('form').find('input').should('exist');
+    });
 
-  requiredFields.forEach((variant) => {
-    it(`does not submit with no-${variant}`, () => {
-      cy.url().then((curURL) => {
-        cy.fillForm(`no-${variant}`);
-        cy.get('#submit').click();
-        cy.url().should('eq', curURL);
+    it('all input fields are required', () => {
+      cy.get('form input').each(($input) => {
+        cy.wrap($input).should('have.attr', 'required');
       });
     });
-  });
 
-  it('email validation logic', () => {
-    cy.fillForm('valid');
-    // override valid data from fixture with invalid email
-    cy.get('#email').clear().type('invalid email');
-    cy.get('#submit').click();
-    // check if invalid prompt appears for user
-    cy.get('#email:invalid').should('exist');
-  });
+    // fills in each input, leaving one, makes sure no redirection happens as all inputs must be entered
+    const requiredFields = ['name', 'email', 'dob', 'bio', 'fact', 'music'];
 
-  it('valid redirect on form', () => {
-    // fill form
-    cy.fillForm('valid');
-    // submit
-    cy.get('#submit').click();
-    // check we got redirected to correct html file
+    requiredFields.forEach((variant) => {
+      it(`does not submit with no-${variant}`, () => {
+        cy.url().then((curURL) => {
+          cy.fillForm(`no-${variant}`);
+          cy.get('#submit').click();
+          cy.url().should('eq', curURL);
+        });
+      });
+    });
 
-    cy.url().should('include', 'submitted.html');
+    it('email validation logic', () => {
+      cy.fillForm('valid');
+      // override valid data from fixture with invalid email
+      cy.get('#email').clear().type('invalid email');
+      cy.get('#submit').click();
+      // check if invalid prompt appears for user
+      cy.get('#email:invalid').should('exist');
+    });
+
+    it('valid redirect on form', () => {
+      // fill form
+      cy.fillForm('valid');
+      // submit
+      cy.get('#submit').click();
+      // check we got redirected to correct html file
+
+      cy.url().should('include', 'submitted.html');
+    });
   });
-});
 
 describe('form page boundary conditions', () => {
   beforeEach(() => {
@@ -59,12 +59,10 @@ describe('form page boundary conditions', () => {
   // NAME - minlength="2" maxlength="100"
   describe('name field', () => {
     it('rejects name below min (1 char)', () => {
-      cy.url().then((curURL) => {
-        cy.fillForm('valid');
-        cy.get('#name').clear().type('A');
-        cy.get('#submit').click();
-        cy.url().should('eq', curURL);
-      });
+      cy.fillForm('no-name');
+      cy.get('#name').clear().type('a');
+      cy.get('#submit').click();
+      cy.get('#name:invalid').should('exist');
     });
 
     it('accepts name at min (2 chars)', () => {

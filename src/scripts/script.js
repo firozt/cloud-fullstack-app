@@ -1,7 +1,12 @@
 document.querySelector('form').addEventListener('submit', (e) => {
-  e.preventDefault();
-
   const form = e.target;
+
+  // check for html validation
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    form.reportValidity();
+    return;
+  }
 
   const fileInput = document.getElementById('profileImg');
 
