@@ -4,17 +4,27 @@
     <!-- injecting aws rum -->
     <script>
       (function (n, i, v, r, s, c, x, z) {
-        x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c };
+        x = window.AwsRumClient = {
+          q: [],
+          n: n,
+          i: i,
+          v: v,
+          r: r,
+          c: c,
+        };
         window[n] = function (c, p) {
           x.q.push({ c: c, p: p });
         };
         z = document.createElement('script');
         z.async = true;
         z.src = s;
-        document.head.insertBefore(z, document.head.firstChild);
+        document.head.insertBefore(
+          z,
+          document.getElementsByTagName('script')[0]
+        );
       })(
         'cwr',
-        '508a0bf4-092e-40b4-a770-5c1db2f8281',
+        'f1bb5753-8dc6-4aff-8ab8-264ba07d2d6b',
         '1.0.0',
         'us-east-1',
         'https://client.rum.us-east-1.amazonaws.com/3.x/cwr.js',
@@ -22,7 +32,7 @@
           sessionSampleRate: 1,
           endpoint: 'https://dataplane.rum.us-east-1.amazonaws.com',
           telemetries: ['performance', 'errors', 'http'],
-          allowCookies: false,
+          // allowCookies: true,
           signing: true,
           identityPoolId: 'us-east-1:bd5ed77a-d724-4745-a689-b4a22525ace0',
         }
