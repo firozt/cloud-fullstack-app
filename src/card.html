@@ -1,6 +1,37 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- injecting aws rum -->
+    <script>
+      (function (n, i, v, r, s, c, x, z) {
+        x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c };
+        window[n] = function (c, p) {
+          x.q.push({ c: c, p: p });
+        };
+        z = document.createElement('script');
+        z.async = true;
+        z.src = s;
+        document.head.insertBefore(
+          z,
+          document.head.getElementsByTagName('script')[0]
+        );
+      })(
+        'cwr',
+        '7960536e-7318-4166-987a-b8c615474d76',
+        '1.0.0',
+        'eu-west-2',
+        'https://client.rum.us-east-1.amazonaws.com/1.19.0/cwr.js',
+        {
+          sessionSampleRate: 1,
+          identityPoolId: 'eu-west-2:bf22b300-1300-41e0-9dbb-162e72c6a0f9',
+          endpoint: 'https://dataplane.rum.eu-west-2.amazonaws.com',
+          telemetries: ['performance', 'errors', 'http'],
+          allowCookies: true,
+          enableXRay: false,
+          signing: true, // If you have a public resource policy and wish to send unsigned requests please set this to false
+        }
+      );
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Display Card</title>

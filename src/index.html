@@ -1,6 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- injecting aws rum -->
+    <script>
+      (function (n, i, v, r, s, c, x, z) {
+        x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c };
+        window[n] = function (c, p) {
+          x.q.push({ c: c, p: p });
+        };
+        z = document.createElement('script');
+        z.async = true;
+        z.src = s;
+        document.head.insertBefore(z, document.head.firstChild);
+      })(
+        'cwr',
+        '508a0bf4-092e-40b4-a770-5c1db2f8281',
+        '1.0.0',
+        'us-east-1',
+        'https://client.rum.us-east-1.amazonaws.com/3.x/cwr.js',
+        {
+          sessionSampleRate: 1,
+          endpoint: 'https://dataplane.rum.us-east-1.amazonaws.com',
+          telemetries: ['performance', 'errors', 'http'],
+          allowCookies: true,
+          identityPoolId: 'us-east-1:bd5ed77a-d724-4745-a689-b4a22525ace0',
+        }
+      );
+    </script>
+
     <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
