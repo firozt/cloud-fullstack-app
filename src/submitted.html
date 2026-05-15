@@ -11,24 +11,19 @@
         z = document.createElement('script');
         z.async = true;
         z.src = s;
-        document.head.insertBefore(
-          z,
-          document.head.getElementsByTagName('script')[0]
-        );
+        document.head.insertBefore(z, document.head.firstChild);
       })(
         'cwr',
-        '7960536e-7318-4166-987a-b8c615474d76',
+        '508a0bf4-092e-40b4-a770-5c1db2f8281',
         '1.0.0',
-        'eu-west-2',
-        'https://client.rum.us-east-1.amazonaws.com/1.19.0/cwr.js',
+        'us-east-1',
+        'https://client.rum.us-east-1.amazonaws.com/3.x/cwr.js',
         {
           sessionSampleRate: 1,
-          identityPoolId: 'eu-west-2:bf22b300-1300-41e0-9dbb-162e72c6a0f9',
-          endpoint: 'https://dataplane.rum.eu-west-2.amazonaws.com',
+          endpoint: 'https://dataplane.rum.us-east-1.amazonaws.com',
           telemetries: ['performance', 'errors', 'http'],
           allowCookies: false,
-          enableXRay: false,
-          signing: true, // If you have a public resource policy and wish to send unsigned requests please set this to false
+          identityPoolId: 'us-east-1:bd5ed77a-d724-4745-a689-b4a22525ace0',
         }
       );
     </script>
